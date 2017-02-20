@@ -338,7 +338,8 @@ public class PlayGamesServices extends CordovaPlugin implements GameHelperListen
             public void run() {
                 try {
                     if (gameHelper.isSignedIn()) {
-                        Intent leaderboardIntent = Games.Leaderboards.getLeaderboardIntent(gameHelper.getApiClient(), options.getString("leaderboardId"));
+                        Intent leaderboardIntent = Games.Leaderboards.getLeaderboardIntent(gameHelper.getApiClient(), options.getString("leaderboardId"),
+                                                    LeaderboardVariant.TIME_SPAN_ALL_TIME, LeaderboardVariant.COLLECTION_PUBLIC);
                         cordova.startActivityForResult(plugin, leaderboardIntent, ACTIVITY_CODE_SHOW_LEADERBOARD);
                         callbackContext.success();
                     } else {
